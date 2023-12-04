@@ -1,0 +1,67 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  border: none;
+  cursor: pointer;
+
+  &.btn-primary,
+  &.btn-primary-circle {
+    color: var(--black-10);
+    background: var(--primary);
+  }
+
+  &.btn-danger,
+  &.btn-danger-circle {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  &.btn-primary,
+  &.btn-danger {
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 10px 20px;
+  }
+
+  &.btn-primary-circle,
+  &.btn-danger-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    &::after {
+      top: 1px;
+      position: relative;
+      content: url("../../assets/icons/delete.svg");
+    }
+  }
+
+  &.btn-primary,
+  &.btn-primary-circle {
+    &:hover {
+      background: var(--primary-010);
+      color: var(--white);
+    }
+  }
+
+  &.btn-danger,
+  &.btn-danger-circle {
+    &:hover {
+      background: var(--red-010);
+    }
+  }
+
+  &.btn-danger-circle {
+    &::after {
+      content: url("../../assets/icons/delete.svg");
+    }
+  }
+
+  &.btn-primary-circle {
+    &::after {
+      content: url("../../assets/icons/add.svg");
+    }
+  }
+}

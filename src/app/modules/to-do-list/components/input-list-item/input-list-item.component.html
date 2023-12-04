@@ -1,0 +1,22 @@
+@for(item of inputListItems; track item; let i = $index){
+<label class="input-label-text" [for]="i">
+  <input
+    type="checkbox"
+    #inputCheckbox
+    [checked]="item.checked"
+    (input)="updateItemCheckbox(inputCheckbox.checked, i)"
+  />
+
+  <input
+    type="text"
+    #inputValue
+    [id]="i"
+    [value]="item.value"
+    (input)="updateItemText(inputValue.value, i)"
+    placeholder="Adicione um valor"
+    autofocus
+  />
+
+  <button class="btn btn-danger-circle" (click)="deleteItem(i)"></button>
+</label>
+}
