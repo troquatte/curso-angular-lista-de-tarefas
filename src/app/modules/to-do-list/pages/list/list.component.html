@@ -3,6 +3,7 @@
   <img
     src="assets/img/task-list-null.png"
     alt="Sua lista está vazia - imagem ilustrativa"
+    loading="eager"
   />
 
   @if(addItem()){
@@ -34,9 +35,7 @@
       (outputDeleteItem)="deleteItem($event)"
     />
   </section>
-  }
-
-  @if(listItemsStage('completed').length){
+  } @if(listItemsStage('completed').length){
   <section>
     <h2>Concluídas</h2>
     <app-input-list-item

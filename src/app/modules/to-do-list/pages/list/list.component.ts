@@ -7,6 +7,7 @@ import { InputListItemComponent } from '../../components/input-list-item/input-l
 
 // Interface
 import { NgClass } from '@angular/common';
+import { ELocalStorage } from '../../../enum/ELocalStorage.enum';
 import { IListItems } from '../../interface/IListItems.interface';
 
 @Component({
@@ -29,7 +30,7 @@ export class ListComponent {
 
   public getInputAndAddItem(value: IListItems) {
     localStorage.setItem(
-      '@my-list',
+      ELocalStorage.MY_LIST,
       JSON.stringify([...this.#setListItems(), value])
     );
 
@@ -62,7 +63,7 @@ export class ListComponent {
     });
 
     return localStorage.setItem(
-      '@my-list',
+      ELocalStorage.MY_LIST,
       JSON.stringify(this.#setListItems())
     );
   }
@@ -80,7 +81,7 @@ export class ListComponent {
     });
 
     return localStorage.setItem(
-      '@my-list',
+      ELocalStorage.MY_LIST,
       JSON.stringify(this.#setListItems())
     );
   }
@@ -91,17 +92,17 @@ export class ListComponent {
     });
 
     return localStorage.setItem(
-      '@my-list',
+      ELocalStorage.MY_LIST,
       JSON.stringify(this.#setListItems())
     );
   }
 
   public deleteAllItems() {
-    localStorage.removeItem('@my-list');
+    localStorage.removeItem(ELocalStorage.MY_LIST);
     return this.#setListItems.set(this.#parseItem());
   }
 
   #parseItem() {
-    return JSON.parse(localStorage.getItem('@my-list') || '[]');
+    return JSON.parse(localStorage.getItem(ELocalStorage.MY_LIST) || '[]');
   }
 }
