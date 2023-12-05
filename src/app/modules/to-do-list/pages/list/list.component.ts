@@ -48,9 +48,16 @@ export class ListComponent {
     });
   }
 
-  public updateItemCheckbox(newItem: { checked: boolean; id: number }) {
+  public updateItemCheckbox(newItem: { checked: boolean; id: string }) {
     this.#setListItems.update((oldValue: IListItems[]) => {
-      oldValue[newItem.id].checked = newItem.checked;
+      oldValue.map((res) => {
+        if (res.id === newItem.id) {
+          res.checked = newItem.checked;
+          return res;
+        }
+
+        return res;
+      });
       return oldValue;
     });
 
@@ -60,9 +67,15 @@ export class ListComponent {
     );
   }
 
-  public updateItemText(newItem: { value: string; id: number }) {
+  public updateItemText(newItem: { value: string; id: string }) {
     this.#setListItems.update((oldValue: IListItems[]) => {
-      oldValue[newItem.id].value = newItem.value;
+      oldValue.map((res) => {
+        if (res.id === newItem.id) {
+          res.value = newItem.value;
+          return res;
+        }
+        return res;
+      });
       return oldValue;
     });
 
@@ -72,8 +85,10 @@ export class ListComponent {
     );
   }
 
-  public deleteItem(id: number) {
-    this.#setListItems().splice(id, 1);
+  public deleteItem(id: string) {
+    this.#setListItems.update((oldValue: IListItems[]) => {
+      return oldValue.filter((item) => item.id !== id);
+    });
 
     return localStorage.setItem(
       '@my-list',

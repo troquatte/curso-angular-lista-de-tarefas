@@ -16,22 +16,22 @@ export class InputListItemComponent {
 
   @Output() public outputUpdateItemCheckbox = new EventEmitter<{
     checked: boolean;
-    id: number;
+    id: string;
   }>();
-  public updateItemCheckbox(checked: boolean, id: number) {
+  public updateItemCheckbox(checked: boolean, id: string) {
     return this.outputUpdateItemCheckbox.emit({ checked, id });
   }
 
   @Output() public outputUpdateItemText = new EventEmitter<{
     value: string;
-    id: number;
+    id: string;
   }>();
-  public updateItemText(value: string, id: number) {
+  public updateItemText(value: string, id: string) {
     return this.outputUpdateItemText.emit({ value, id });
   }
 
-  @Output() public outputDeleteItem = new EventEmitter<number>();
-  public deleteItem(id: number) {
+  @Output() public outputDeleteItem = new EventEmitter<string>();
+  public deleteItem(id: string) {
     return this.outputDeleteItem.emit(id);
   }
 }

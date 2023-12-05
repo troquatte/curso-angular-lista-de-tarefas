@@ -24,6 +24,7 @@
 />
 
 <main class="container">
+  @if(listItemsStage('pending').length){
   <section>
     <h2>Pendências</h2>
     <app-input-list-item
@@ -33,7 +34,9 @@
       (outputDeleteItem)="deleteItem($event)"
     />
   </section>
+  }
 
+  @if(listItemsStage('completed').length){
   <section>
     <h2>Concluídas</h2>
     <app-input-list-item
@@ -43,6 +46,7 @@
       (outputDeleteItem)="deleteItem($event)"
     />
   </section>
+  }
 </main>
 
 <footer>

@@ -34,7 +34,12 @@ export class InputAddItemComponent {
       this.#cdr.detectChanges();
       this.inputText.nativeElement.value = '';
 
+      const dataAtual = new Date();
+      const timestamp = dataAtual.getTime();
+      const id = 'ID' + timestamp;
+
       this.outputListItems.emit({
+        id,
         checked: false,
         value,
       });
