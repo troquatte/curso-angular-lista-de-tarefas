@@ -22,6 +22,7 @@
       <input
         type="text"
         id="inputValue"
+        (keyup.enter)="focusAndAddItem(inputText.value)"
         placeholder="Adicione um novo item"
         autofocus
         #inputText
