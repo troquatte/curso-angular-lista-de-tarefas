@@ -7,6 +7,7 @@ import { InputListItemComponent } from '../../components/input-list-item/input-l
 
 // Interface
 import { NgClass } from '@angular/common';
+import Swal from 'sweetalert2';
 import { ELocalStorage } from '../../../enum/ELocalStorage.enum';
 import { IListItems } from '../../interface/IListItems.interface';
 
@@ -87,19 +88,39 @@ export class ListComponent {
   }
 
   public deleteItem(id: string) {
-    this.#setListItems.update((oldValue: IListItems[]) => {
-      return oldValue.filter((item) => item.id !== id);
-    });
+    Swal.fire({
+      title: 'Tem certeza',
+      text: 'Você não poderá reverter isso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, delete o item',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.#setListItems.update((oldValue: IListItems[]) => {
+          return oldValue.filter((item) => item.id !== id);
+        });
 
-    return localStorage.setItem(
-      ELocalStorage.MY_LIST,
-      JSON.stringify(this.#setListItems())
-    );
+        return localStorage.setItem(
+          ELocalStorage.MY_LIST,
+          JSON.stringify(this.#setListItems())
+        );
+      }
+    });
   }
 
   public deleteAllItems() {
-    localStorage.removeItem(ELocalStorage.MY_LIST);
-    return this.#setListItems.set(this.#parseItem());
+    Swal.fire({
+      title: 'Tem certeza',
+      text: 'Você não poderá reverter isso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, delete tudo',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem(ELocalStorage.MY_LIST);
+        return this.#setListItems.set(this.#parseItem());
+      }
+    });
   }
 
   #parseItem() {
