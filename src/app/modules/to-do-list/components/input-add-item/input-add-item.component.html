@@ -1,6 +1,6 @@
 <header
   [ngClass]="{
-    'has-items': inputListItems.length,
+    'has-items': inputListItems.length
   }"
 >
   @if(inputListItems.length){
@@ -9,8 +9,8 @@
 
   <div
     [ngClass]="{
-    'container': inputListItems.length,
-  }"
+      container: inputListItems.length
+    }"
   >
     <label
       class="input-label-text"
@@ -21,16 +21,17 @@
     >
       <input
         type="text"
-        id="inputValue"
         (keyup.enter)="focusAndAddItem(inputText.value)"
         placeholder="Adicione um novo item"
+        id="inputValue"
         autofocus
         #inputText
       />
+
       <button
         class="btn btn-primary-circle"
-        (click)="focusAndAddItem(inputText.value)"
         title="Adicionar um novo item"
+        (click)="focusAndAddItem(inputText.value)"
       ></button>
     </label>
   </div>

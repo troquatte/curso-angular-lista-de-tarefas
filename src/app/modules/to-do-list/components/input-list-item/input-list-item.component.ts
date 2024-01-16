@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IListItems } from '../../interface/IListItems.interface';
+
+// Interface
+import { IListItems } from '../../interface/IListItems.iterface';
 
 @Component({
   selector: 'app-input-list-item',
@@ -9,25 +11,22 @@ import { IListItems } from '../../interface/IListItems.interface';
   styleUrl: './input-list-item.component.scss',
 })
 export class InputListItemComponent {
-  @Input({
-    required: true,
-  })
-  public inputListItems: IListItems[] = [];
+  @Input({ required: true }) public inputListItems: IListItems[] = [];
 
   @Output() public outputUpdateItemCheckbox = new EventEmitter<{
-    checked: boolean;
     id: string;
+    checked: boolean;
   }>();
-  public updateItemCheckbox(checked: boolean, id: string) {
-    return this.outputUpdateItemCheckbox.emit({ checked, id });
+  public updateItemCheckbox(id: string, checked: boolean) {
+    return this.outputUpdateItemCheckbox.emit({ id, checked });
   }
 
   @Output() public outputUpdateItemText = new EventEmitter<{
-    value: string;
     id: string;
+    value: string;
   }>();
-  public updateItemText(value: string, id: string) {
-    return this.outputUpdateItemText.emit({ value, id });
+  public updateItemText(id: string, value: string) {
+    return this.outputUpdateItemText.emit({ id, value });
   }
 
   @Output() public outputDeleteItem = new EventEmitter<string>();

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   transition: 0.5s;
 
   border: none;
@@ -11,12 +12,21 @@
   &.btn-primary-circle {
     color: var(--black-10);
     background: var(--primary);
+
+    &:hover {
+      background: var(--primary-010);
+      color: var(--white);
+    }
   }
 
   &.btn-danger,
   &.btn-danger-circle {
     color: var(--white);
     background: var(--red);
+
+    &:hover {
+      background: var(--red-010);
+    }
   }
 
   &.btn-primary,
@@ -31,37 +41,22 @@
     width: 30px;
     height: 30px;
     border-radius: 50px;
+
     &::after {
       top: 1px;
       position: relative;
-      content: url("../../assets/icons/delete.svg");
-    }
-  }
-
-  &.btn-primary,
-  &.btn-primary-circle {
-    &:hover {
-      background: var(--primary-010);
-      color: var(--white);
-    }
-  }
-
-  &.btn-danger,
-  &.btn-danger-circle {
-    &:hover {
-      background: var(--red-010);
-    }
-  }
-
-  &.btn-danger-circle {
-    &::after {
-      content: url("../../assets/icons/delete.svg");
     }
   }
 
   &.btn-primary-circle {
     &::after {
       content: url("../../assets/icons/add.svg");
+    }
+  }
+
+  &.btn-danger-circle {
+    &::after {
+      content: url("../../assets/icons/delete.svg");
     }
   }
 }

@@ -1,4 +1,4 @@
-@if(!listItems().length){
+@if(!getListItems().length){
 <div class="container">
   <img
     src="assets/img/task-list-null.png"
@@ -12,39 +12,36 @@
   </button>
   } @else {
   <app-input-add-item
-    [inputListItems]="listItems()"
-    (outputListItems)="getInputAndAddItem($event)"
+    [inputListItems]="getListItems()"
+    (outputAddListItem)="getInputAndAddItem($event)"
   />
   }
 </div>
 } @else {
-
 <app-input-add-item
-  [inputListItems]="listItems()"
-  (outputListItems)="getInputAndAddItem($event)"
+  [inputListItems]="getListItems()"
+  (outputAddListItem)="getInputAndAddItem($event)"
 />
 
 <main class="container">
   @if(listItemsStage('pending').length){
-  <section>
-    <h2>Pendências</h2>
-    <app-input-list-item
-      [inputListItems]="listItemsStage('pending')"
-      (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
-      (outputUpdateItemText)="updateItemText($event)"
-      (outputDeleteItem)="deleteItem($event)"
-    />
-  </section>
-  } @if(listItemsStage('completed').length){
-  <section>
-    <h2>Concluídas</h2>
-    <app-input-list-item
-      [inputListItems]="listItemsStage('completed')"
-      (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
-      (outputUpdateItemText)="updateItemText($event)"
-      (outputDeleteItem)="deleteItem($event)"
-    />
-  </section>
+  <h2>Pendências</h2>
+  <app-input-list-item
+    [inputListItems]="listItemsStage('pending')"
+    (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+    (outputUpdateItemText)="updateItemText($event)"
+    (outputDeleteItem)="deleteItem($event)"
+  />
+  }
+
+  @if(listItemsStage('completed').length){
+  <h2>Concluídas</h2>
+  <app-input-list-item
+    [inputListItems]="listItemsStage('completed')"
+    (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+    (outputUpdateItemText)="updateItemText($event)"
+    (outputDeleteItem)="deleteItem($event)"
+  />
   }
 </main>
 

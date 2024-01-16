@@ -12,6 +12,17 @@
   margin-bottom: 20px;
   padding: 5px;
 
+  input[type="text"] {
+    width: 85%;
+
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: var(--white);
+    outline: 0;
+    margin-left: 10px;
+  }
+
   input[type="checkbox"] {
     appearance: none;
     background-color: var(--white);
@@ -24,20 +35,8 @@
     cursor: pointer;
 
     &:checked {
-      background-color: var(--primary);
-      border: none;
+      background: var(--primary);
     }
-  }
-
-  input[type="text"] {
-    width: 85%;
-
-    border: none;
-    background: none;
-    font-size: 14px;
-    color: var(--white);
-    outline: 0;
-    margin-left: 10px;
   }
 
   input[type="checkbox"] + input[type="text"] {
